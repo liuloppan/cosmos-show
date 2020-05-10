@@ -9,7 +9,7 @@ import { ConnectionStates } from './api/Redux/Reducers/connection';
 
 function renderApp() {
   return (
-    <div>
+    <div className='app'>
       SUCCESS!
     </div>
   );
@@ -18,17 +18,17 @@ function renderApp() {
 function renderErrorOverlay(errorType) {
 
   return (
-    <div className={styles.app}>
+    <div className='app'>
       <Overlay>
-        <Error>
+        <Error className={'error' + ' ErrorBox'}>
           { errorType === 'disconnected-from-openspace' && (
             [<h2 key={1}>Houston, we have a...</h2>,
-            <p key={2}>...disconnection between the user interface and OpenSpace.</p>,
-            <p key={3}>Trying to reconnect automatically...</p>]
+              <p key={2}>...disconnection between the user interface and OpenSpace.</p>,
+              <p key={3}>Trying to reconnect automatically...</p>]
           )}
           { errorType === 'loading-properties' && (
             [<h2 key={1}>OpenSpace needs a second to load...</h2>,
-            <p key={2}>
+              <p key={2}>
               We are loading data from OpenSpace, please standby.
               </p>
             ]

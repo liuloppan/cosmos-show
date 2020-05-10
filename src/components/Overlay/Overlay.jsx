@@ -1,10 +1,8 @@
-// @flow
-import React, { Element } from 'react';
-
+import React from 'react';
 import styles from './Overlay.scss';
 
-const Overlay = (props: { children: Element<any> }): Element<any> => (
-  <div className={styles.messageOverlay}>
+const Overlay = props => (
+  <div className='messageOverlay'>
     { props.children }
   </div>
 );

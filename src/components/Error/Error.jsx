@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styles from './Error.scss';
 
 const Error = ({ children, className }) => (
-  <div className={`${className} ${styles.ErrorBox}`}>
+  <div className={`${className}`}>
     { children }
   </div>
 );
