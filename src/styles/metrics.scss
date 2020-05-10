@@ -1,0 +1,57 @@
+// metrics
+$window-width: 1920px;
+$window-height: 1080px;
+$sidebar-width: 400px;
+$bottom-bar-height: 60px;
+$tabs-width: 60px;
+
+
+$font-size: 1vh;
+
+$crop-bottom: $bottom-bar-height;
+$crop-right: $sidebar-width;
+$crop-left: 0;
+$crop-top: 0;
+
+$main-width: $window-width - $crop-left - $crop-right;
+$main-height: $window-height - $crop-top - $crop-bottom;
+$main-aspect-ratio: $main-width / $main-height;
+
+//z-indices
+$z-window-below: -100;
+$z-openspace: 0;
+$z-gui-base: 100;
+$z-gui-items: 110;
+$z-gui-overlay: 200;
+$z-gui-overlay-items: 210;
+$z-window-overlay: 300;
+$z-window-overlay-items: 310;
+
+// padding
+$base-padding: 14px;
+$vertical-padding: $base-padding / 2;
+$button-padding: $vertical-padding $base-padding;
+$sidebar-padding: ($base-padding / 2);
+$sidebar-indent: $base-padding;
+
+// popover
+$popover-horizontal-padding: $base-padding / 2;
+$popover-arrow-size: 0.5rem;
+$popover-corner-radius: $popover-arrow-size / 2;
+
+// element-specific config
+$scrollbar-width: 10px;
+
+// Input
+$input-font-size: 13px;
+// the font size of the label
+$input-label-size: 10px;
+// total margin above and below input label
+$input-label-margin: 6px;
+// thickness of the loading indicating border
+$input-loading-border-width: 2px;
+// padding
+$input-padding-horizontal: 7px;
+$input-padding-vertical: $base-padding * 2;
+
+$input-total-height: $input-padding-vertical + $input-font-size;

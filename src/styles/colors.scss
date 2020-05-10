@@ -1,0 +1,39 @@
+// color definitions
+$dark-grey: #181818;
+$green: #D9DA6D;
+$blue: #3DBDEE;
+$red: #FF4136;
+$orange: #FF851B;
+$uni-green: #7dc242;
+$sidebar-light-color: #4a4a4a;
+$sidebar-color: #303030;
+$sidebar-dark-color: #201E1E;
+$sidebar-darkest-color: #131313;
+$ui-blue: rgba(42, 143, 206, 1);
+$ui-dark-blue: #0E2037;
+
+// color usage
+$ui-background-solid: $dark-grey;
+$ui-background: rgba($ui-background-solid, 0.9);
+$ui-background-hover: rgba(white, 0.06);
+$ui-background-selected: rgba(white, 0.03);
+$ui-background-active: rgba(white, 0.03);
+
+$ui-button: lighten($ui-background-solid, 10%);
+$ui-button-inactive: rgba(rgb(90, 176, 233), 0.2);
+
+$ui-button-blue: darken($ui-blue, 10%);
+
+$ui-danger: $red;
+$ui-warning: $orange;
+
+$ui-divider: darken($ui-background, 1%);
+
+$ui-highlight-primary: $green;
+$ui-highlight-secondary: $blue;
+
+$text-color-focus: white;
+$text-color-blur: darken($text-color-focus, 40%);
+
+$input-text-color-focus: $text-color-focus;
+$input-text-color-blur: $text-color-blur;

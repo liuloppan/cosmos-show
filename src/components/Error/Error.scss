@@ -1,0 +1,33 @@
+@import '../../styles/all';
+
+.ErrorBox {
+  padding: 20px;
+  width: 100%;
+
+  p {
+    margin-bottom: 1em;
+  }
+}
+
+.severe,
+.error {
+  background: $ui-danger;
+}
+
+.warning {
+  background: $ui-warning;
+}
+
+.errorButton {
+  background-color: rgba(255, 255, 255, 0.2);
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.3) !important;
+  }
+}
+
+.errorButton {
+  background-color: rgba(255, 255, 255, 0.2);
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.3) !important;
+  }
+}

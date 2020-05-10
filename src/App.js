@@ -1,61 +1,66 @@
-import React, { Component } from 'react';
-import './App.css';
-import openspaceApi from 'openspace-api-js';
+import React from 'react';
+import { shallowEqual, useSelector, useDispatch } from 'react-redux';
+import styles from './App.scss';
+import Error from './components/Error/Error';
+import Overlay from './components/Overlay/Overlay';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    let api = this._api = openspaceApi('localhost', 4682);
+import { startConnection } from './api/Redux/Actions';
+import { ConnectionStates } from './api/Redux/Reducers/connection';
 
-    api.onDisconnect(() => {
-      this.setState({
-        connected: false
-      });
-    });
-
-    api.onConnect(async () => {
-      try {
-        this.openspace = await api.library();
-        console.info('connected!')
-        this.setState({
-          connected: true
-        });
-      }
-      catch (e) {
-        console.info('OpenSpace library could not be loaded: Error: \n', e)
-        this.setState({
-          connected: false
-        });
-        return;
-      }
-    })
-
-    this.state = {
-      connected: false
-    }
-    api.connect();
-  }
-
-  get connectionStatus() {
-    if (this.state.connected) {
-      return <div className="connection-status connection-status-connected">
-        Connected to OpenSpace
-      </div>
-    }
-    else {
-      return <div className="connection-status connection-status-disconnected">
-          Disconnected from OpenSpace
-      </div>
-    }
-  }
-
-  render() {
-    return <div>
-      {this.connectionStatus}
-      <div className="main">
-        This is where my GUI goes
-      </div>
+function renderApp() {
+  return (
+    <div>
+      SUCCESS!
     </div>
+  );
+}
+
+function renderErrorOverlay(errorType) {
+
+  return (
+    <div className={styles.app}>
+      <Overlay>
+        <Error>
+          { errorType === 'disconnected-from-openspace' && (
+            [<h2 key={1}>Houston, we have a...</h2>,
+            <p key={2}>...disconnection between the user interface and OpenSpace.</p>,
+            <p key={3}>Trying to reconnect automatically...</p>]
+          )}
+          { errorType === 'loading-properties' && (
+            [<h2 key={1}>OpenSpace needs a second to load...</h2>,
+            <p key={2}>
+              We are loading data from OpenSpace, please standby.
+              </p>
+            ]
+          )}
+        </Error>
+      </Overlay>
+    </div>
+  );
+}
+
+function App() {
+  const dispatch = useDispatch();
+  const selectedData = useSelector(state => (
+    {
+      connection: state.connection.connection,
+      initializedProperties: state.propertyTree.initialized,
+    }
+  ), shallowEqual);
+
+  // Handle connection to OpenSpace
+  switch (selectedData.connection) {
+    case ConnectionStates.connected:
+      if (selectedData.initializedProperties === true) {
+        return renderApp();
+      }
+      return renderErrorOverlay('loading-properties');
+    case ConnectionStates.disconnected:
+      dispatch(startConnection());
+      console.info('Connecting to OpenSpace...');
+    // fallthrough;
+    default:
+      return renderErrorOverlay('disconnected-from-openspace');
   }
 }
 
