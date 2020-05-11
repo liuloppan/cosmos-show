@@ -1,0 +1,49 @@
+@import "../../styles/all";
+
+$number-of-tabs: 6;
+$tab-color: rgba(white, 0.05);
+$tab-color-active: $ui-background;
+$tab-border-color: rgba(white, 0.08);
+$padding: 2vh;
+$tab-size: calc(100vw / #{$number-of-tabs});
+
+.tabsWrapper {
+  background-color: $tab-color;
+  color: white;
+  justify-content: flex-start;
+  overflow: hidden;
+  display: flex;
+}
+
+.tabText{
+  position: relative;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.tabMain {
+  padding-top: $padding;
+  padding-bottom: $padding;
+
+  background-color: $tab-color;
+  transition: background-color 0.4s ease;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+
+  text-align: center;
+
+  border-style: solid;
+  border-color: $tab-border-color;
+  box-sizing: border-box;
+  border-width: 2px 1px 2px 2px;
+
+  &.active{
+    background-color: $tab-color-active;
+    border-bottom: 0px;
+  }
+  &.small{
+    height: 100%;
+    width: $tab-size;
+    animation: $slide-up-animation;
+  }
+}

@@ -1,8 +1,9 @@
 import React from 'react';
 import { shallowEqual, useSelector, useDispatch } from 'react-redux';
-import styles from './App.scss';
+import './App.scss';
 import Error from './components/Error/Error';
 import Overlay from './components/Overlay/Overlay';
+import Layout from './views/Layout';
 
 import { startConnection } from './api/Redux/Actions';
 import { ConnectionStates } from './api/Redux/Reducers/connection';
@@ -10,7 +11,7 @@ import { ConnectionStates } from './api/Redux/Reducers/connection';
 function renderApp() {
   return (
     <div className='app'>
-      SUCCESS!
+      <Layout></Layout>
     </div>
   );
 }

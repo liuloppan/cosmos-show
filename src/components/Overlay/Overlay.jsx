@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Overlay.scss';
+import './Overlay.scss';
 
 const Overlay = props => (
   <div className='messageOverlay'>
