@@ -5,7 +5,7 @@ import {
   subscribeToProperty,
   unsubscribeToProperty,
   setPropertyValue
-} from './Actions';
+} from './Redux/Actions';
 
 export const useProperty = uri => {
   const dispatch = useDispatch();

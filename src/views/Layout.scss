@@ -6,19 +6,10 @@
 }
 
 .tabsContainer{
+  padding-top: 1%;
   height: $tabs-height;
   width: 100%;
   background: $ui-background-solid;
-    // color: white;
-    // border-style: solid;
-    // border-color: $tab-color;
-    // box-sizing: border-box;
-    // border-width: 0px 0px 0px 1px;
-
-  // justify-content: flex-end;
-  // overflow: hidden;
-  // display: flex;
-  // flex-direction: column-reverse;
 }
 
 .contentContainer{

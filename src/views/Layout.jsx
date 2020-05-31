@@ -1,8 +1,9 @@
 import React from 'react';
-import propTypes from 'prop-types';
+import useSelect from 'react-redux';
 import './Layout.scss';
 import Tabs from '../components/Tabs/Tabs';
 import views from './views'
+import BeyondView from './Beyond/Beyond';
 
 const Layout = props => {
 
@@ -17,7 +18,9 @@ const Layout = props => {
       <div className='tabsContainer'>
         <Tabs tabNames={tabNames}></Tabs>
       </div>
-      <div className='contentContainer'></div>
+      <div className='contentContainer'>
+        <BeyondView></BeyondView>
+      </div>
     </div>
   );
 };
