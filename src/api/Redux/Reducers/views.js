@@ -9,7 +9,7 @@ export default (state = defaultState, action) => {
     case actionTypes.setCurrentView:
       return {
         ...state,
-        currentView: action.payload.view
+        currentView: action.payload
       };
     default:
       return state;

@@ -1,6 +1,6 @@
 import React from 'react';
-import RenderableControls from '../../components/Controls/RenderableControls';
-import './../views.scss';
+import RenderableControls from '../components/Controls/RenderableControls';
+import './views.scss';
 
 const BeyondView = () => {
 

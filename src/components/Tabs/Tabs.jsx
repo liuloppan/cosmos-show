@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import propTypes from 'prop-types';
 import './Tabs.scss';
+import { setCurrentView } from './../../api/Redux/Actions';
 
 const Tabs = props => {
+
   const { tabNames } = props;
+  const dispatch = useDispatch();
   const [active, setActive] = useState('moon');
 
   const createOnClick = tabName => () => {
     setActive(tabName);
+    dispatch(setCurrentView(tabName));
   };
 
   const createTab = (text, isActive, onClick) => {
