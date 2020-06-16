@@ -144,3 +144,8 @@ export const setPropertyTreeExpansion = data => ({
   type: actionTypes.setPropertyTreeExpansion,
   payload: data
 });
+
+export const setCurrentView = view => ({
+  type: actionTypes.setCurrentView,
+  payload: view
+});

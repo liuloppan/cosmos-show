@@ -26,5 +26,8 @@ export const actionTypes = {
 
   // action types for version
   getVersion: 'VERSION_GET',
-  initializeVersion: 'VERSION_INITIALIZE'
+  initializeVersion: 'VERSION_INITIALIZE',
+
+  // views
+  setCurrentView: 'VIEW_SET_CURRENT'
 };

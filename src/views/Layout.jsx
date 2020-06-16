@@ -1,11 +1,10 @@
 import React from 'react';
-import useSelect from 'react-redux';
 import './Layout.scss';
 import Tabs from '../components/Tabs/Tabs';
 import views from './views'
 import BeyondView from './Beyond/Beyond';
 
-const Layout = props => {
+const Layout = () => {
 
   const tabNames = [];
 
