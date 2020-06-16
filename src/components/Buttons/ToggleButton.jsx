@@ -2,9 +2,10 @@ import React from 'react';
 import './ToggleButton.scss';
 
 const ToggleButton = props => {
-  const { onClick, active } = props;
+  const { onClick, active, label } = props;
   return (
-    <div>
+    <div className="toggle-button-wrapper">
+      <p className="label"> {label} </p>
       <label className="switch">
         <input type="checkbox" checked={active} onChange={onClick}/>
         <span className="slider round"></span>

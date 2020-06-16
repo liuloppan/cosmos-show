@@ -1,0 +1,30 @@
+@import "../../styles/all"; 
+
+$control-height: 20vh;
+$control-width: 200px;
+$control-color: white;
+$standard-color: rgba($control-color, 0.2);
+$visible-color: rgba($green, 0.2);
+$invisible-color: rgba($red, 0.2);
+
+.control-wrapper{
+  height: $control-height;
+  min-width: $control-width;
+  background-color: $standard-color;
+  border-radius: 5px;
+  margin: $base-padding;
+  flex-grow: 4; 
+
+  &.visible{
+    background-color: $visible-color;
+  }
+  &.invisible{
+    background-color: $invisible-color;
+  }
+}
+
+.control-title{
+  text-align: center;
+  color: white;
+  padding: $base-padding;
+}

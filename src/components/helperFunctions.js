@@ -1,8 +1,7 @@
 import {NavigationAnchorKey, RetargetAnchorKey, NavigationAimKey, RetargetAimKey
 } from './../keys';
 
-
-const fadeTime = 1;
+const fadeTime = 0.5;
 // Here are common helper functions
 export const sleep = milliseconds => {
   return new Promise(resolve => setTimeout(resolve, milliseconds));
@@ -28,31 +27,29 @@ export const retargetAim = async (openspace, node) => {
   openspace.setPropertyValue(RetargetAimKey, null);
 };
 
-export const toggleRenderable = async (openspace, node, timeout, isActive) => {
+export const toggleRenderable = async (openspace, node, timeout, isActive, opacity) => {
   const enabledUri = 'Scene.' + node + '.Renderable.Enabled';
-  const opacityUri =  'Scene.' + node + '.Renderable.Opacity';
 
-  //const currentlyOn = (openspace.getPropertyValueSingle(opacityUri) === 1);
+  let opacityUri;
+
+  // TODO: https://github.com/OpenSpace/OpenSpace/issues/1196
+  // Due to inconsistencies in OpenSpace, some renderables use "Transparency" and others "Opacity"
+  if(opacity) {
+    opacityUri = 'Scene.' + node + '.Renderable.Opacity';
+  }
+  else {
+    opacityUri = 'Scene.' + node + '.Renderable.Transparency';
+  }
+
   if(!isActive){
-    console.log('enable')
     openspace.setPropertyValueSingle(enabledUri, true);
     openspace.setPropertyValueSingle(opacityUri, 1, fadeTime);
 
   }
   else {
-    console.log('disable')
     openspace.setPropertyValueSingle(opacityUri, 0.0001, fadeTime);
     timeout(() => {
       openspace.setPropertyValue(enabledUri, false);
     }, fadeTime * 1000);
   }
-}
-
-export const getRenderableUri = node => {
-  const renderable = {
-    enabledUri : 'Scene.' + node + '.Renderable.Enabled',
-    opacityUri :  'Scene.' + node + '.Renderable.Opacity'
-  };
-
-  return renderable;
 }

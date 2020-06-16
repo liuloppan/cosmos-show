@@ -4,21 +4,33 @@ import ToggleButton from './../../components/Buttons/ToggleButton';
 import ControlPanel from './../../components/ControlPanel/ControlPanel';
 
 import { getRenderableUri, toggleRenderable } from './../../components/helperFunctions';
-
+import { ApplyFlyToKey, FlightDestinationDistKey,
+  NavigationAnchorKey, NavigationAimKey, RetargetAnchorKey, RetargetAimKey } from '../../keys';
 import './../views.scss';
 
 const RadiosSphereControls = () => {
   const openspace = useLuaApi();
+  const [, setFlightDestination] = useProperty(FlightDestinationDistKey);
+  const [isFlying, setIsFlying] = useProperty(ApplyFlyToKey);
   const radioSphere = getRenderableUri('RadioSphere');
   const [radioSphereEnabled] = useProperty(radioSphere.enabledUri);
   const [radioSphereOpacity] = useProperty(radioSphere.opacityUri);
-  const [radioSphereTimeout, cancelTimeout] = useTimeout();
+  const [enabledTimeout, cancelEnabledTimeout] = useTimeout();
 
-  const isActive = (radioSphereEnabled && (radioSphereOpacity === 1));
+  const isActive = radioSphereEnabled;
 
-  const onClick = () => {
-    cancelTimeout();
-    toggleRenderable(openspace, "RadioSphere", radioSphereTimeout, isActive);
+  const onClickVis = () => {
+    cancelEnabledTimeout();
+    toggleRenderable(openspace, "RadioSphere", enabledTimeout, isActive);
+  };
+
+  const onClickTarget = () => {
+    toggleRenderable(openspace, "RadioSphere", enabledTimeout, isActive);
+  };
+
+  const onClickFlyTo = () => {
+    setFlightDestination(3E18);
+    setIsFlying(!isFlying);
   };
 
   return (
@@ -27,10 +39,20 @@ const RadiosSphereControls = () => {
         title="Radio Sphere"
       >
         <ToggleButton
-          onClick={onClick}
-          active={isActive}
-        >
-        </ToggleButton>
+          onClick={onClickVis}
+          active={radioSphereEnabled}
+          label="Visibility"
+        />
+        <ToggleButton
+          onClick={onClickTarget}
+          active= "false"
+          label="Target center"
+        />
+        <ToggleButton
+          onClick={onClickFlyTo}
+          active={isFlying}
+          label="Fly To"
+        />
       </ControlPanel>
 
     </div>
