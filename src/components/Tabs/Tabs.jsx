@@ -54,9 +54,7 @@ const Tabs = props => {
 };
 
 Tabs.propTypes = {
-};
-
-Tabs.defaultProps = {
+  tabNames: propTypes.arrayOf(propTypes.string)
 };
 
 export default Tabs;

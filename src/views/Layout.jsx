@@ -6,6 +6,7 @@ import Tabs from '../components/Tabs/Tabs';
 import Beyond from './Beyond';
 import General from './General';
 import Earth from './Earth';
+import SolarSystem from './SolarSystem';
 
 // ['General','Earth', 'Moon', 'Mars', 'Solar System', 'Beyond'
 const viewNames = ['Earth', 'Solar System', 'Beyond'];
@@ -26,6 +27,9 @@ const Layout = () => {
 
     if ( currentView === 'Beyond')
       return <Beyond/>;
+    else if( currentView === 'Solar System') {
+      return <SolarSystem/>;
+    }
     else if( currentView === 'General') {
       return <General/>;
     }
