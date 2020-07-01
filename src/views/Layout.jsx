@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import './Layout.scss';
 import Tabs from '../components/Tabs/Tabs';
+import ToolBar from '../components/Controls/ToolBar';
 
 import Beyond from './Beyond';
 import General from './General';
@@ -40,7 +41,8 @@ const Layout = () => {
   }
 
   return (
-    <div className='wrapper'>
+      <div className='wrapper'>
+      <ToolBar></ToolBar>
       <div className='tabs-container'>
         <Tabs tabNames={tabNames}></Tabs>
       </div>

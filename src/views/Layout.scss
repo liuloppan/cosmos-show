@@ -1,6 +1,7 @@
 @import "../styles/all";
 
 .wrapper{
+  background: $ui-background-solid;
   display: flex;
   flex-direction: column;
 }
@@ -9,11 +10,9 @@
   padding-top: 1%;
   height: $tabs-height;
   width: 100%;
-  background: $ui-background-solid;
 }
 
 .content-container{
-  background: $ui-background-solid;
   height: 90vh;
   width: 100%;
 }

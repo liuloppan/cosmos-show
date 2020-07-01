@@ -33,6 +33,10 @@ const RenderableControls = props => {
   };
 
   const onClickFlyTo = () => {
+    // We make sure that we target before flying
+    setFlightDestination(boundingSphere*2);
+    retargetAnchor(openspace, nodeName);
+
     if(!flightDistance){
       setFlightDestination(boundingSphere*4);
     }
