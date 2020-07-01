@@ -1,0 +1,44 @@
+@import '../../styles/colors.scss';
+$color-slider: $blue;
+
+.slide-container {
+  width: 15vw;
+  min-width: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 50%;
+  height: 10px;
+  background: darken(white, 10%);
+  outline: none;
+  -webkit-transition: .2s;
+  transition: background .2s;
+  border-radius: 5px;
+  &:hover{
+    background:white;
+  }
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: $color-slider;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+.slider-label {
+  margin: 10px;
+}

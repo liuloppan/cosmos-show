@@ -8,7 +8,7 @@ const ToggleButton = props => {
       <p className="label"> {label} </p>
       <label className="switch">
         <input type="checkbox" checked={active} onChange={onClick}/>
-        <span className="slider round"></span>
+        <span className="toggle-slider round"></span>
       </label>
     </div>
   );

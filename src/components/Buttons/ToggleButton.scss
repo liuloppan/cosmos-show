@@ -1,6 +1,11 @@
 
+@import '../../styles/colors.scss';
+
+$color-toggle: $blue;
 $button-width: 150px;
 $button-height: $button-width * 0.5;
+
+$toggle-size: 20px;
 
 .toggle-button-wrapper{
   display: flex;
@@ -17,23 +22,11 @@ $button-height: $button-width * 0.5;
   padding-right: 10px;
 }
 
-.button {
-  width: $button-width;
-  height: $button-height;
-  background: green;
-  border-radius: 10px;
-  text-align: center;
-  vertical-align: center;
-  &:active{
-    background: red;
-  }
-}
-
 .switch {
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: $toggle-size * 2.3;
+  height: $toggle-size * 1.3;
 }
 
 .switch input {
@@ -42,7 +35,7 @@ $button-height: $button-width * 0.5;
   height: 0;
 }
 
-.slider {
+.toggle-slider {
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -54,38 +47,39 @@ $button-height: $button-width * 0.5;
   transition: .4s;
 }
 
-.slider:before {
+.toggle-slider:before {
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
+  height: $toggle-size;
+  width: $toggle-size;
   left: 4px;
-  bottom: 4px;
+  //right: 4px;
+  bottom: $toggle-size/6;
   background-color: white;
   -webkit-transition: .4s;
   transition: .4s;
 }
 
-input:checked + .slider {
-  background-color: #2196F3;
+input:checked + .toggle-slider {
+  background-color: $color-toggle;
 }
 
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+input:focus + .toggle-slider {
+  box-shadow: 0 0 1px ;
 }
 
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
+input:checked + .toggle-slider:before {
+  -webkit-transform: translateX($toggle-size);
+  -ms-transform: translateX($toggle-size);
+  transform: translateX($toggle-size);
 }
 
 /* Rounded sliders */
-.slider.round {
+.toggle-slider.round {
   border-radius: 34px;
 }
 
-.slider.round:before {
+.toggle-slider.round:before {
   border-radius: 50%;
 }
 

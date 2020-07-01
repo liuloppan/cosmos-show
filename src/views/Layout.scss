@@ -4,10 +4,11 @@
   background: $ui-background-solid;
   display: flex;
   flex-direction: column;
+  color: white;
 }
 
 .tabs-container{
-  padding-top: 1%;
+  padding-top: 3px;
   height: $tabs-height;
   width: 100%;
 }

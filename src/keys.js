@@ -10,6 +10,7 @@ export const NavigationAimKey = OrbitalNavigator + 'Aim';
 export const RetargetAnchorKey = OrbitalNavigator + 'RetargetAnchor';
 export const RetargetAimKey = OrbitalNavigator + 'RetargetAim';
 export const FlightSpeedKey = OrbitalNavigator + 'VelocityZoomControl';
+export const RotationalFrictionKey = OrbitalNavigator + 'Friction.RotationalFriction';
 
 // RENDERING
 export const BlackoutFactorKey = 'RenderEngine.BlackoutFactor';

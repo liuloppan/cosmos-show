@@ -42,11 +42,11 @@ const Layout = () => {
 
   return (
       <div className='wrapper'>
-      <ToolBar></ToolBar>
       <div className='tabs-container'>
         <Tabs tabNames={tabNames}></Tabs>
       </div>
       <div className='content-container'>
+        <ToolBar></ToolBar>
         {renderCurrentView()}
       </div>
     </div>

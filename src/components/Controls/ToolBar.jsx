@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { useLuaApi, useProperty } from '../../api/hooks';
 import './ToolBar.scss';
 import { ApplyFlyToKey, FlightDestinationDistKey, NavigationAnchorKey,
-  BlackoutFactorKey } from '../../keys';
+  BlackoutFactorKey, FlightSpeedKey, RotationalFrictionKey } from '../../keys';
 import ToggleButton from './../Buttons/ToggleButton';
+import Slider from './../Slider/Slider';
 
 import { fadeIn, fadeOut } from './../helperFunctions';
 
@@ -12,10 +13,12 @@ const ToolBar = () => {
   const [flyIn, setFlyIn] = useState(undefined);
   const [anchor] = useProperty(NavigationAnchorKey);
   const [blackoutFactor] = useProperty(BlackoutFactorKey);
+  const [rotationFriction, setRotationFriction] = useProperty(RotationalFrictionKey);
   const [flightDestination, setFlightDestination] = useProperty(FlightDestinationDistKey);
   const [isFlying, setIsFlying] = useProperty(ApplyFlyToKey);
+  const [flightSpeed, setFlightSpeed] = useProperty(FlightSpeedKey);
 
-  const onClickFlyIn= () => {
+  const onClickFlyIn = () => {
     setFlightDestination(1);
     setIsFlying(!isFlying);
     if(flyIn === true){
@@ -27,7 +30,7 @@ const ToolBar = () => {
     }
   };
 
-  const onClickFlyOut= () => {
+  const onClickFlyOut = () => {
     setFlightDestination(1.5E27);
     setIsFlying(!isFlying);
     if(flyIn === false){
@@ -39,15 +42,24 @@ const ToolBar = () => {
     }
   };
 
-  const onClickFade= () => {
+  const onClickRotationFriction = () => {
+    setRotationFriction(!rotationFriction);
+  };
+
+  const onClickFade = () => {
     if(blackoutFactor > 0) {
-      console.log("Fade out");
       fadeOut(openspace, 1);
     }
     else{
-      console.log("Fade in");
       fadeIn(openspace, 1);
     }
+  };
+
+  const sliderCallback = val => {
+    if(val > 0.01 && !isFlying){
+      setIsFlying(true);
+    }
+    setFlightSpeed(val)
   };
 
   return (
@@ -55,13 +67,10 @@ const ToolBar = () => {
       <div>
         Anchor: {anchor}
       </div>
-      <div>
-        Destination: {flightDestination}
-      </div>
-      <ToggleButton
-        onClick={onClickFade}
-        active={!(blackoutFactor > 0)}
-        label="Fade "
+      <Slider
+        label= "Fly speed"
+        min={0.0} max={0.15}
+        callback={sliderCallback}
       />
       <ToggleButton
         onClick={onClickFlyIn}
@@ -72,6 +81,16 @@ const ToolBar = () => {
         onClick={onClickFlyOut}
         active={flyIn === false}
         label="Fly Out "
+      />
+      <ToggleButton
+        onClick={onClickFade}
+        active={!(blackoutFactor > 0)}
+        label="Fade "
+      />
+      <ToggleButton
+        onClick={onClickRotationFriction}
+        active={rotationFriction}
+        label="Rotation Friction"
       />
     </div>
   );
