@@ -9,7 +9,7 @@ import { ApplyFlyToKey, FlightDestinationDistKey, NavigationAnchorKey } from '..
 
 const RenderableControls = props => {
   const { nodeName, title, flightDistance,
-    toggleVisibility, hasOpacityProp } = props;
+    toggleVisibility, hasOpacityProp, multiNodeUri, customVis } = props;
   const openspace = useLuaApi();
 
   const [boundingSphere] = useProperty('Scene.'+ nodeName +'.Renderable.BoundingSphere');
@@ -22,8 +22,19 @@ const RenderableControls = props => {
   const isActive = renderableEnabled;
 
   const onClickVis = () => {
-    cancelEnabledTimeout();
-    toggleRenderable(openspace, nodeName, enabledTimeout, isActive, hasOpacityProp);
+
+    if (multiNodeUri) {
+      toggleRenderable(openspace, multiNodeUri, enabledTimeout, isActive, hasOpacityProp);
+    }
+    else if(customVis){
+      toggleRenderable(openspace, nodeName, enabledTimeout, isActive, hasOpacityProp);
+      customVis(openspace, isActive);
+    }
+    else {
+      cancelEnabledTimeout();
+      toggleRenderable(openspace, nodeName, enabledTimeout, isActive, hasOpacityProp);
+    }
+
   };
 
   const onClickTarget = () => {
@@ -70,7 +81,6 @@ const RenderableControls = props => {
           label="Fly To"
         />
       </ControlPanel>
-
     </div>
   );
 };

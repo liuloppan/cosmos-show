@@ -27,6 +27,25 @@ export const retargetAim = async (openspace, node) => {
   openspace.setPropertyValue(RetargetAimKey, null);
 };
 
+// This is a special case
+export const toggleConstallationImages = async (openspace, isActive) => {
+
+  console.log("constellations");
+
+  const enabledUri = 'Scene.Constellation Art*.Renderable.Enabled';
+
+  let opacityUri;
+  opacityUri = 'Scene.Constellation Art*.Renderable.Opacity';
+
+  if(!isActive){
+    openspace.setPropertyValue(opacityUri, 0.1, fadeTime);
+
+  }
+  else {
+    openspace.setPropertyValue(opacityUri, 0.0001, fadeTime);
+  }
+};
+
 export const toggleRenderable = async (openspace, node, timeout, isActive, opacity) => {
   const enabledUri = 'Scene.' + node + '.Renderable.Enabled';
 
@@ -42,12 +61,12 @@ export const toggleRenderable = async (openspace, node, timeout, isActive, opaci
   }
 
   if(!isActive){
-    openspace.setPropertyValueSingle(enabledUri, true);
-    openspace.setPropertyValueSingle(opacityUri, 1, fadeTime);
+    openspace.setPropertyValue(enabledUri, true);
+    openspace.setPropertyValue(opacityUri, 1, fadeTime);
 
   }
   else {
-    openspace.setPropertyValueSingle(opacityUri, 0.0001, fadeTime);
+    openspace.setPropertyValue(opacityUri, 0.0001, fadeTime);
     timeout(() => {
       openspace.setPropertyValue(enabledUri, false);
     }, fadeTime * 1000);

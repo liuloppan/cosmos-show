@@ -14,9 +14,9 @@ const ToolBar = () => {
   const [anchor] = useProperty(NavigationAnchorKey);
   const [blackoutFactor] = useProperty(BlackoutFactorKey);
   const [rotationFriction, setRotationFriction] = useProperty(RotationalFrictionKey);
-  const [flightDestination, setFlightDestination] = useProperty(FlightDestinationDistKey);
+  const [, setFlightDestination] = useProperty(FlightDestinationDistKey);
   const [isFlying, setIsFlying] = useProperty(ApplyFlyToKey);
-  const [flightSpeed, setFlightSpeed] = useProperty(FlightSpeedKey);
+  const [, setFlightSpeed] = useProperty(FlightSpeedKey);
 
   const onClickFlyIn = () => {
     setFlightDestination(1);
@@ -65,7 +65,7 @@ const ToolBar = () => {
   return (
     <div className='toolsWrapper'>
       <div>
-        Anchor: {anchor}
+        Focus: {anchor}
       </div>
       <Slider
         label= "Fly speed"

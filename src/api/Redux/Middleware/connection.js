@@ -6,6 +6,7 @@ import {
 
 import { actionTypes } from '../Actions/actionTypes';
 import api from '../../openspaceApi';
+import { onConnectRunScripts } from '../../onConnected';
 
 let openspace;
 
@@ -15,6 +16,7 @@ function initializeConnection(store) {
 
     store.dispatch(initializeLuaApi(openspace));
     store.dispatch(onOpenConnection());
+    onConnectRunScripts(openspace);
   }
 
   function onDisconnect() {
