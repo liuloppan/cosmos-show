@@ -1,7 +1,7 @@
-@import "../../styles/all"; 
+@import "../../styles/all";
 
-$control-height: 20vh;
-$control-width: 200px;
+$control-height: calc(100vh/3);
+$control-width: calc(100vw/6);
 $control-color: white;
 $standard-color: rgba($control-color, 0.2);
 $visible-color: rgba($green, 0.2);
@@ -9,11 +9,15 @@ $invisible-color: rgba($red, 0.2);
 
 .control-wrapper{
   height: $control-height;
-  min-width: $control-width;
+  min-height: 220px;
+  min-width: 200px;
+  width: $control-width;
+  max-width: 250px;
+  width: $control-width;
   background-color: $standard-color;
   border-radius: 5px;
   margin: $base-padding;
-  flex-grow: 4; 
+  flex-grow: 4;
 
   &.visible{
     background-color: $visible-color;
@@ -24,7 +28,11 @@ $invisible-color: rgba($red, 0.2);
 }
 
 .control-title{
+  height: 12%;
+  background: rgba(white, 0.05);
   text-align: center;
   color: white;
   padding: $base-padding;
+  text-transform: uppercase;
+  font-size: 0.9rem;
 }
