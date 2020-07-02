@@ -27,13 +27,9 @@ export const retargetAim = async (openspace, node) => {
   openspace.setPropertyValue(RetargetAimKey, null);
 };
 
-// This is a special case
+// This is a special case. We don't want to disable/enable the images because it takes too
+// much time. We also want a different opacity value.
 export const toggleConstallationImages = async (openspace, isActive) => {
-
-  console.log("constellations");
-
-  const enabledUri = 'Scene.Constellation Art*.Renderable.Enabled';
-
   let opacityUri;
   opacityUri = 'Scene.Constellation Art*.Renderable.Opacity';
 
@@ -60,7 +56,7 @@ export const toggleRenderable = async (openspace, node, timeout, isActive, opaci
     opacityUri = 'Scene.' + node + '.Renderable.Transparency';
   }
 
-  if(!isActive){
+  if(!isActive) {
     openspace.setPropertyValue(enabledUri, true);
     openspace.setPropertyValue(opacityUri, 1, fadeTime);
 

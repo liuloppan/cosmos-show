@@ -10,35 +10,38 @@ import { fadeIn, fadeOut } from './../helperFunctions';
 
 const ToolBar = () => {
   const openspace = useLuaApi();
-  const [flyIn, setFlyIn] = useState(undefined);
+  const [flyIn, setFlyIn] = useState(false);
+  const [flyOut, setFlyOut] = useState(false);
   const [anchor] = useProperty(NavigationAnchorKey);
   const [blackoutFactor] = useProperty(BlackoutFactorKey);
   const [rotationFriction, setRotationFriction] = useProperty(RotationalFrictionKey);
   const [, setFlightDestination] = useProperty(FlightDestinationDistKey);
   const [isFlying, setIsFlying] = useProperty(ApplyFlyToKey);
-  const [, setFlightSpeed] = useProperty(FlightSpeedKey);
+  const [flightSpeed, setFlightSpeed] = useProperty(FlightSpeedKey);
 
   const onClickFlyIn = () => {
     setFlightDestination(1);
-    setIsFlying(!isFlying);
     if(flyIn === true){
-      setFlyIn(undefined);
+      setFlyIn(false);
+      setIsFlying(false);
     }
     else{
-      setFlyIn(true);
       setIsFlying(true);
+      setFlyIn(true);
+      setFlyOut(false);
     }
   };
 
   const onClickFlyOut = () => {
     setFlightDestination(1.5E27);
-    setIsFlying(!isFlying);
-    if(flyIn === false){
-      setFlyIn(undefined);
+    if(flyOut === true){
+      setFlyOut(false);
+      setIsFlying(false);
     }
     else{
-      setFlyIn(false);
       setIsFlying(true);
+      setFlyOut(true);
+      setFlyIn(false);
     }
   };
 
@@ -70,22 +73,23 @@ const ToolBar = () => {
       <Slider
         label= "Fly speed"
         min={0.0} max={0.15}
+        defaultValue= {flightSpeed}
         callback={sliderCallback}
       />
       <ToggleButton
         onClick={onClickFlyIn}
         active={flyIn}
-        label="Fly In "
+        label="Fly Towards"
       />
       <ToggleButton
         onClick={onClickFlyOut}
-        active={flyIn === false}
-        label="Fly Out "
+        active={flyOut}
+        label="Fly Away"
       />
       <ToggleButton
         onClick={onClickFade}
         active={!(blackoutFactor > 0)}
-        label="Fade "
+        label="Fade"
       />
       <ToggleButton
         onClick={onClickRotationFriction}

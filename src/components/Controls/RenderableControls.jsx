@@ -95,7 +95,9 @@ RenderableControls.propTypes = {
   title: propTypes.string,
   flightDistance: propTypes.number,
   toggleVisibility: propTypes.bool,
-  hasOpacityProp: propTypes.bool
+  hasOpacityProp: propTypes.bool,
+  multiNodeUri: propTypes.string,
+  customVis: propTypes.func
 }
 
 export default RenderableControls;

@@ -1,24 +1,18 @@
 import React, { useState } from 'react';
 import propTypes from 'prop-types';
-import { useLuaApi, useProperty } from '../../api/hooks';
 import './Slider.scss';
 
-const sliderMax = 100;
-const sliderMin = 0;
+const numOfSteps = 50;
 
 const Slider = props => {
-  const { max, min, callback, label } = props;
-  const [sliderValue, setSliderValue] = useState(0);
+  const { max, min, defaultValue, callback, label } = props;
+  const [sliderValue, setSliderValue] = useState(defaultValue);
 
-  const maxMinNormalize = val => {
-    const newVal = (max - min)/ (sliderMax - sliderMin) * (val - min) + min;
-    return newVal;
-  }
   // Runs whenever the slider changes from user input.
   const onSliderChanged = event => {
     const newSliderValue = Number(event.target.value);
     setSliderValue(newSliderValue);
-    callback(maxMinNormalize(newSliderValue));
+    callback(newSliderValue);
   };
 
   return (
@@ -30,8 +24,9 @@ const Slider = props => {
         className="slider"
         id="slider"
         type="range"
-        min={sliderMin}
-        max={sliderMax}
+        min={min}
+        max={max}
+        step={(max-min)/numOfSteps}
         value={sliderValue}
         onChange={onSliderChanged}
       />
@@ -41,12 +36,14 @@ const Slider = props => {
 
 Slider.defaultProps = {
   max: 100,
-  min: 0
+  min: 0,
+  defaultValue: 50
 }
 
 Slider.propTypes = {
   max: propTypes.number,
   min: propTypes.number,
+  defaultValue: propTypes.number,
   callback: propTypes.func.isRequired,
   label: propTypes.string
 };
