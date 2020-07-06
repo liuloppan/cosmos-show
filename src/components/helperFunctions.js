@@ -1,6 +1,9 @@
 import {NavigationAnchorKey, RetargetAnchorKey, NavigationAimKey, RetargetAimKey
 } from './../keys';
 
+export const planets = ['Mercury', 'Venus', 'Earth', 'Mars', 'Saturn',
+  'Jupiter','Uranus','Neptune'];
+
 const fadeTime = 0.5;
 // Here are common helper functions
 export const sleep = milliseconds => {

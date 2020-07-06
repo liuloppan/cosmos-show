@@ -1,9 +1,8 @@
 import React from 'react';
 import RenderableControls from '../components/Controls/RenderableControls';
+import SolarSystemToolBar from '../components/Controls/SolarSystemToolBar';
 import './views.scss';
-
-const planets = ['Mercury', 'Venus', 'Earth', 'Mars', 'Saturn',
-  'Jupiter','Uranus','Neptune'];
+import { planets } from '../components/helperFunctions';
 
 const SolarSystemView = () => {
 
@@ -25,6 +24,7 @@ const SolarSystemView = () => {
 
   return (
     <div className='view-wrapper'>
+      <SolarSystemToolBar/>
       {generatePlanetControls()}
     </div>
   );

@@ -87,14 +87,14 @@ const ToolBar = () => {
         label="Fly Away"
       />
       <ToggleButton
-        onClick={onClickFade}
-        active={!(blackoutFactor > 0)}
-        label="Fade"
-      />
-      <ToggleButton
         onClick={onClickRotationFriction}
         active={rotationFriction}
         label="Rotation Friction"
+      />
+      <ToggleButton
+        onClick={onClickFade}
+        active={!(blackoutFactor > 0)}
+        label="Fade"
       />
     </div>
   );
