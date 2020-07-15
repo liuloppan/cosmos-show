@@ -45,19 +45,9 @@ export const toggleConstallationImages = async (openspace, isActive) => {
   }
 };
 
-export const toggleRenderable = async (openspace, node, timeout, isActive, opacity) => {
+export const toggleRenderable = async (openspace, node, timeout, isActive) => {
   const enabledUri = 'Scene.' + node + '.Renderable.Enabled';
-
-  let opacityUri;
-
-  // TODO: https://github.com/OpenSpace/OpenSpace/issues/1196
-  // Due to inconsistencies in OpenSpace, some renderables use "Transparency" and others "Opacity"
-  if(opacity) {
-    opacityUri = 'Scene.' + node + '.Renderable.Opacity';
-  }
-  else {
-    opacityUri = 'Scene.' + node + '.Renderable.Transparency';
-  }
+  const opacityUri = 'Scene.' + node + '.Renderable.Opacity';
 
   if(!isActive) {
     openspace.setPropertyValue(enabledUri, true);

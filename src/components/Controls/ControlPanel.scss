@@ -1,6 +1,6 @@
 @import "../../styles/all";
 
-$control-height: calc(100vh/3);
+$control-height: 220px;
 $control-width: calc(100vw/6);
 $control-color: white;
 $standard-color: rgba($control-color, 0.2);
@@ -9,7 +9,6 @@ $invisible-color: rgba($red, 0.2);
 
 .control-wrapper{
   height: $control-height;
-  min-height: 220px;
   min-width: 200px;
   width: $control-width;
   max-width: 250px;

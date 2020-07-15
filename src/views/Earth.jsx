@@ -1,16 +1,18 @@
 import React from 'react';
-import RenderableControls from '../components/Controls/RenderableControls';
+import NodeControls from '../components/Controls/NodeControls';
 import './views.scss';
 
 const GeneralView = () => {
 
   return (
     <div className='view-wrapper'>
-      <RenderableControls
-        nodeName="Planck"
-        title="Cosmic Background Radiation"
-        flightDistance= {1.5E27}
-        toggleVisibility = {false}
+      <NodeControls
+        nodeName="Earth"
+        title="Earth"
+      />
+      <NodeControls
+        nodeName="ISS"
+        title="ISS"
       />
     </div>
   );

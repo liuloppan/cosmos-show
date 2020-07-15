@@ -1,5 +1,6 @@
 import React from 'react';
 import RenderableControls from '../components/Controls/RenderableControls';
+import NodeControls from '../components/Controls/NodeControls';
 import { toggleConstallationImages } from './../components/helperFunctions';
 import './views.scss';
 
@@ -16,7 +17,6 @@ const BeyondView = () => {
         nodeName="Constellations"
         title="Star Constellations"
         flightDistance= {3E18}
-        hasOpacityProp={false}
       />
       <RenderableControls
         nodeName="Constellation Art-Orion" //We pick one constallation to actually toggle
@@ -30,23 +30,20 @@ const BeyondView = () => {
         title="Exoplanets"
         flightDistance= {3E18}
       />
-      <RenderableControls
+      <NodeControls
         nodeName="MilkyWayVolume"
         title="Milky Way Galaxy"
         flightDistance= {9E20}
-        toggleVisibility = {false}
       />
-      <RenderableControls
+      <NodeControls
         nodeName="SloanDigitalSkySurvey"
         title="Sloan Galaxy Sky Survey"
         flightDistance= {25E24}
-        toggleVisibility = {false}
       />
-      <RenderableControls
+      <NodeControls
         nodeName="Planck"
         title="Cosmic Background Radiation"
         flightDistance= {1.5E27}
-        toggleVisibility = {false}
       />
     </div>
   );

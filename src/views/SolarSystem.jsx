@@ -1,5 +1,5 @@
 import React from 'react';
-import RenderableControls from '../components/Controls/RenderableControls';
+import NodeControls from '../components/Controls/NodeControls';
 import SolarSystemToolBar from '../components/Controls/SolarSystemToolBar';
 import './views.scss';
 import { planets } from '../components/helperFunctions';
@@ -11,10 +11,9 @@ const SolarSystemView = () => {
 
     planets.forEach(planet => {
       controls.push(
-        <RenderableControls
+        <NodeControls
           nodeName={planet}
           title={planet}
-          toggleVisibility = {false}
           key={planet}
         />
       )
